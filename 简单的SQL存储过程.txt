@@ -1,0 +1,121 @@
+ 簡單SQL存儲過程實例
+2010-05-14 08:54 19014人阅读 评论(2) 收藏 举报
+sqljoin存储encryptionsql serverinsert
+实例1：只返回单一记录集的存储过程。
+银行存款表（bankMoney）的内容如下
+Id
+userID
+Sex
+Money
+001
+Zhangsan
+男
+30
+002
+Wangwu
+男
+50
+003
+Zhangsan
+男
+40
+要求1：查询表bankMoney的内容的存储过程
+create procedure sp_query_bankMoney
+as
+select * from bankMoney
+go
+exec sp_query_bankMoney
+注*  在使用过程中只需要把中的SQL语句替换为存储过程名，就可以了很方便吧！
+实例2（向存储过程中传递参数）：
+加入一笔记录到表bankMoney，并查询此表中userID= Zhangsan的所有存款的总金额。
+Create proc insert_bank @param1 char(10),@param2 varchar(20),@param3 varchar(20),@param4 int,@param5 int output
+with encryption ---------加密
+as
+insert bankMoney (id,userID,sex,Money)
+Values(@param1,@param2,@param3, @param4)
+select @param5=sum(Money) from bankMoney where userID='Zhangsan'
+go
+在SQL Server查询分析器中执行该存储过程的方法是：
+declare @total_price int
+exec insert_bank '004','Zhangsan','男',100,@total_price output
+print '总余额为'+convert(varchar,@total_price)
+go
+在这里再啰嗦一下存储过程的3种传回值（方便正在看这个例子的朋友不用再去查看语法内容）:
+1.以Return传回整数
+2.以output格式传回参数
+3.Recordset
+传回值的区别:
+output和return都可在批次程式中用变量接收,而recordset则传回到执行批次的客户端中。
+实例3：使用带有复杂 SELECT 语句的简单过程
+
+　　下面的存储过程从四个表的联接中返回所有作者（提供了姓名）、出版的书籍以及出版社。该存储过程不使用任何参数。
+
+USE pubs
+IF EXISTS (SELECT name FROM sysobjects
+         WHERE name = 'au_info_all' AND type = 'P')
+   DROP PROCEDURE au_info_all
+GO
+CREATE PROCEDURE au_info_all
+AS
+SELECT au_lname, au_fname, title, pub_name
+   FROM authors a INNER JOIN titleauthor ta
+      ON a.au_id = ta.au_id INNER JOIN titles t
+      ON t.title_id = ta.title_id INNER JOIN publishers p
+      ON t.pub_id = p.pub_id
+GO
+
+　　au_info_all 存储过程可以通过以下方法执行：
+
+EXECUTE au_info_all
+
+　　实例4：使用带有参数的简单过程
+
+CREATE PROCEDURE au_info
+   @lastname varchar(40),
+   @firstname varchar(20)
+AS
+SELECT au_lname, au_fname, title, pub_name
+   FROM authors a INNER JOIN titleauthor ta
+      ON a.au_id = ta.au_id INNER JOIN titles t
+      ON t.title_id = ta.title_id INNER JOIN publishers p
+      ON t.pub_id = p.pub_id
+   WHERE  au_fname = @firstname
+      AND au_lname = @lastname
+GO
+
+　　au_info 存储过程可以通过以下方法执行：
+
+EXECUTE au_info 'Dull', 'Ann'
+-- Or
+EXECUTE au_info @lastname = 'Dull', @firstname = 'Ann'
+-- Or
+EXECUTE au_info @firstname = 'Ann', @lastname = 'Dull'
+
+实例5：使用带有通配符参数的简单过程
+
+CREATE PROCEDURE au_info2
+@lastname varchar(30) = 'D%',
+@firstname varchar(18) = '%'
+AS
+SELECT au_lname, au_fname, title, pub_name
+FROM authors a INNER JOIN titleauthor ta
+   ON a.au_id = ta.au_id INNER JOIN titles t
+   ON t.title_id = ta.title_id INNER JOIN publishers p
+   ON t.pub_id = p.pub_id
+WHERE au_fname LIKE @firstname
+   AND au_lname LIKE @lastname
+GO
+
+　　au_info2 存储过程可以用多种组合执行。下面只列出了部分组合：
+
+EXECUTE au_info2
+-- Or
+EXECUTE au_info2 'Wh%'
+-- Or
+EXECUTE au_info2 @firstname = 'A%'
+-- Or
+EXECUTE au_info2 '[CK]ars[OE]n'
+-- Or
+EXECUTE au_info2 'Hunter', 'Sheryl'
+-- Or
+EXECUTE au_info2 'H%', 'S%'

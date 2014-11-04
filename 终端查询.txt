@@ -1,0 +1,3 @@
+select * from COM_OTC_PHOTO where DELETE_FLAG='N' and exists(select * from CD_EMP where SPLIT_NO like '0101%' and DELETE_FLAG='N') order by UPLOAD_DATE desc;
+
+select SPLIT_NO from CD_EMP where exists(select * from CD_WECHAT_USER where EMPLOYEE_ID=CD_EMP.ROW_ID and  WECHAT_CODE='ozmOzjlZok1XA2UQWw7K52-HWwgc' and DELETE_FLAG='N') and DELETE_FLAG='N'

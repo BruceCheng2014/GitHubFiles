@@ -1,0 +1,42 @@
+动态选择或设置select下拉框  
+
+2009-03-24 15:51:21|  分类： ActiveX && JS |举报|字号 订阅
+<select id="ddlResourceType" onchange="getvalue(this)">
+
+</select>
+
+    动态删除select中的所有options：
+
+       document.getElementById("ddlResourceType").options.length=0;
+
+     动态删除select中的某一项option：
+
+       document.getElementById("ddlResourceType").options.remove(indx); 
+
+     动态添加select中的项option:
+
+       document.getElementById("ddlResourceType").options.add(new Option(text,value));
+
+     上面在IE和FireFox都可行，用标准的DOM操作也可以，就是document.createElement，appendChild，removeChild之类的。
+
+获得值：
+
+        obj.options[obj.selectedIndex].value
+
+获取文本：
+
+        obj.options[obj.selectedIndex].text
+
+清空opton：obj.options.length=0;
+
+根据给定的值，选中：
+
+for(var i = 0; i<obj.length; i++){
+
+       if(obj.options[i].value == value){
+
+        obj.options[i].selected = 'selected';     
+
+       }
+
+      }  

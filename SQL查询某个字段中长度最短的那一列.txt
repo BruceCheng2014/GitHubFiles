@@ -1,0 +1,18 @@
+方法一
+
+
+SELECT top 1 ROW_ID,SPLIT_NO
+FROM CD_EMP
+WHERE (len(SPLIT_NO)=
+    (SELECT  MIN(len(SPLIT_NO)) as A
+     FROM CD_EMP where EMP_CODE='OTCDSMN02'))
+     and EMP_CODE='OTCDSMN02'
+
+
+
+方法二、
+     
+SELECT  top 1 ROW_ID,SPLIT_NO
+FROM CD_EMP
+where EMP_CODE='OTCDSMN02'
+order by len(SPLIT_NO)

@@ -1,0 +1,36 @@
+通过js或者html或者php等动态程序都可以方便的实现跳转，这里搜集了几种页面跳转的方式 
+js方式的页面跳转 
+1.window.location.href方式 
+    <script language="javascript" type="text/javascript"> 
+           window.location.href="http://www.dayanmei.com/"; 
+    </script> 
+
+2.window.navigate方式跳转 
+   <script language="javascript"> 
+    window.navigate("top.jsp"); 
+  </script> 
+3.window.loction.replace方式实现页面跳转，注意跟第一种方式的区别 
+<script language="javascript"> 
+    window.location.replace("http://www.dayanmei.com"); 
+</script> 
+有3个jsp页面（1.jsp, 2.jsp, 3.jsp），进系统默认的是1.jsp ，当我进入2.jsp的时候， 2.jsp里面用window.location.replace("3.jsp");与用window.location.href ("3.jsp");从用户界面来看是没有什么区别的，但是当3.jsp页面有一个"返回"按钮，调用window.history.go(-1); wondow.history.back();方法的时候，一点这个返回按钮就要返回2.jsp页面的话，区别就出来了，当用 window.location.replace("3.jsp");连到3.jsp页面的话，3.jsp页面中的调用 window.history.go(-1);wondow.history.back();方法是不好用的，会返回到1.jsp 。 
+
+4.self.location方式实现页面跳转，和下面的top.location有小小区别 
+   <script language="JavaScript"> 
+          self.location='top.htm'; 
+   </script> 
+
+5.top.location 
+   <script language="javascript"> 
+          top.location='xx.jsp'; 
+   </script> 
+6.不推荐这种方式跳转 
+    <script language="javascript"> 
+    alert("返回"); 
+    window.history.back(-1); 
+   </script> 
+在php程序中,这种方式跳转前面不能有任何输出 
+<?php 
+header("url.php"); 
+?> 
+meta方式实现跳转(content = 3 单位是秒)

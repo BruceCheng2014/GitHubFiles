@@ -1,0 +1,5 @@
+ //初始化时间
+        var d = new Date();
+        function addzero(v) { if (v < 10) return '0' + v; return v.toString(); }
+        var s = d.getFullYear().toString() + "-" + addzero(d.getMonth() + 1) + "-" + addzero(d.getDate());
+        document.getElementById("searchdate").value = s;

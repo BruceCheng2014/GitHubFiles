@@ -1,0 +1,2 @@
+select * from COM_MESSAGE T
+WHERE T.SEND_DATE > dateadd(mm,-1,getdate())

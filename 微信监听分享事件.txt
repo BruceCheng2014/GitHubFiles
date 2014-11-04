@@ -1,0 +1,45 @@
+// 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+    // 发送给好友
+    WeixinJSBridge.on('menu:share:appmessage', function(argv){
+        WeixinJSBridge.invoke('sendAppMessage',{
+                              "appid":appId,
+                              "img_url":imgUrl,
+                              "img_width":"640",
+                              "img_height":"640",
+                              "link":shareLink,
+                              "desc":shopName+'微生活会员卡:'+couponTitle,
+                              "title":'分享个会员卡给你'
+                              }, function(res) {})
+    });
+
+    // 分享到朋友圈
+    WeixinJSBridge.on('menu:share:timeline', function(argv){
+        WeixinJSBridge.invoke('shareTimeline',{
+                              "img_url":imgUrl,
+                              "img_width":"640",
+                              "img_height":"640",
+                              "link":shareLink,
+                              "desc": couponTitle,
+                              "title":shopName+'微生活会员卡:'+couponTitle
+                              }, function(res) {
+                              });
+    });
+
+    // 分享到微博
+    var weiboContent = '';
+    if (isSupportOnline) {
+        weiboContent = "#微信扫描二维码#我加入"+shopName+"会员获得尊贵微生活会员卡，"+(couponTitle?'得到'+couponTitle+'，':'')+"又酷又实惠！";
+        weiboContent += "http://meishi.qq.com/misc/images/weixin/"+sid+".png";
+    } else {
+        weiboContent = "#微信扫描二维码#我刚在"+shopName+"扫描二维码，轻松获得微生活会员卡，"+(couponTitle?'得到'+couponTitle+'，':'')+"酷炫又好玩！";
+    }
+    WeixinJSBridge.on('menu:share:weibo', function(argv){
+        WeixinJSBridge.invoke('shareWeibo',{
+                              "content":weiboContent,
+                              "url":'http://meishi.qq.com/weixin',
+                              }, function(res) {
+                              });
+    }); 
+}, false)

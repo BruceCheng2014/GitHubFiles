@@ -1,0 +1,1 @@
+select * from CD_EMP where SPLIT_NO like '01010401%' and SPLIT_NO <> '01010401'; select * from CD_EMP where ROW_ID in (select EMPLOYEE_ID from CD_WECHAT_USER where WECHAT_CODE='ozmOzjlZok1XA2UQWw7K52-HWwgc');

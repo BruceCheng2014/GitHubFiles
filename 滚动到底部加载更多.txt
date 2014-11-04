@@ -1,0 +1,12 @@
+ //滚到底部自动加载
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            var totalheight = parseFloat(document.body.clientHeight) + parseFloat($(window).scrollTop());
+            //alert($(window).height() + "*" + $(window).scrollTop() + "*" + $(document).height());
+            if ($(document).height() <= totalheight) {
+                if (flag) {
+                    init();
+                }
+            }
+        });
+    });

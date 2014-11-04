@@ -1,0 +1,95 @@
+腾讯开发者账号:BruceCheng  密码:不变
+
+小米开发者账号:BruceCheng或者1546109472@qq.com 密码:520
+
+百度开发账号:夏守成093,密码:520
+
+科大讯飞语音云平台:18095627282,密码:520
+
+CSDN博客账号:u013059555 密码:不变
+
+或者 :2698402395 密码:不变
+
+企业邮箱的网址:http://webmail.fominfo.com/page/login/login.jsp
+
+企业邮箱xiasc@fominfo.com密码:1314
+
+
+查看数据的网址：http://172.18.1.112/Fast
+
+Frank/1...0
+
+
+万总的邮箱：wanwq@fominfo.com
+
+
+海正药业的测试网址：http://172.18.1.112/Fast/Default.aspx
+
+测试用户:
+
+赵振宇 销售部  地区经理  Sales-DM zhaozy 
+
+孟岩 销售部  大区经理  Sales-RM MengYan 
+
+孙叶芸 南中国区销售部 医药代表  yysun 
+
+C03C570 陈群 商务部 招商-东区 招商大区经理 RM 
+
+Z05Z136 赵冠文 商务部  招商总监  SD 
+
+密码都是1...0
+ 
+有信密码：433777
+
+
+
+微信公众账号:1546109472@qq.com  密码:1314
+
+
+//公司的服务号账号
+
+helen00711@126.com
+
+密码:fom....8
+
+
+
+//又拍云账号
+
+brucecheng 密码:1314
+
+域名:brucecheng.b0.upaiyun.com
+
+
+表单密钥：3NzT9SpS0ud699hD9ph7Ps/jMpk=
+
+
+SAE应用的账号:
+1546109472@qq.com 密码:1314
+
+应用的账号密码:
+access key:xon02kjjx4
+secret key:j2k2ylwjk15m441yixkzk3ih0w23llxzkxhy00jh
+
+
+appID:wxc7f943fecdf1d377
+appsecret:7ed07c7a245450a0598b80c38acc4fe3
+
+爱购购：
+URL:http://brucecheng.sinaapp.com/CoreServlet
+
+
+Tomcat用户名密码:fomuser  fom1...8
+
+诺基亚手机网页开发安装码：
+Username:	nokia
+Serial Number:	Q5zyWkz0dlR+dki7Utv+J8MDmaA=
+
+IntelliJ 安装密钥:bruce   92547-C6LLX-4RV83-F9TUZ-YPDS2-MFYY2
+
+
+
+专门用于生成进度条的网站:http://ajaxload.info/
+
+
+https://github.com/BruceCheng2014/GitHubFiles

@@ -1,0 +1,21 @@
+<script type="text/javascript">
+            window.onload = function () {
+                    //获取超链接的参数(仅限一个参数)
+                    var url = document.URL;
+                    var para = "";
+                    var urlA = url.split('?'); //以url中的问号进行分割;
+                    var urlB = urlA.toString().split("=");
+                    var linkvalue = urlB[1];  //这样就可以得到这个值 
+                    document.getElementById("sale").value = "?wechatcode=" + linkvalue;
+                    document.getElementById("bonus").value = "?wechatcode=" + linkvalue;
+                    document.getElementById("latestversion").value = "?wechatcode=" + linkvalue;
+                    document.getElementById("total").value = "?wechatcode=" + linkvalue;
+                    document.getElementById("detail").value = "?wechatcode=" + linkvalue;
+                    //通过jquery来改变超链接的值
+                    $("a[href=#]").attr("href", document.getElementById("sale").value);
+                    $("a[href=#1]").attr("href", document.getElementById("bonus").value);
+                    $("a[href=#2]").attr("href", document.getElementById("latestversion").value);
+                    $("a[href=#3]").attr("href", document.getElementById("total").value);
+                    $("a[href=#4]").attr("href", document.getElementById("detail").value);
+            }; 
+</script>
